@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="carritt.js" defer></script>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="container">
+        <header>
+            <br>
+            <h1>Carrito de Compras</h1>
+            <div class="carrito-icono" onclick="toggleCarrito()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="contador-productos" id="contador-productos">0</span>
+            </div>
+            <div class="carrito-dropdown" id="carrito-dropdown">
+                <h2>Carrito de Compras</h2>
+                <ul id="lista-carrito">
+                    <!-- Aquí se añadirán los productos -->
+                </ul>
+                <p>Total: $<span id="total">0.00</span></p>
+                
+                <!-- Campos para ingresar datos del cliente -->
+                <label for="nombre-cliente">Nombre del Cliente:</label>
+                <input type="text" id="nombre-cliente" placeholder="Nombre" required>
+                
+                <br>
+                <label for="direccion-cliente">Dirección del Cliente:</label>
+                <input type="text" id="direccion-cliente" placeholder="Dirección" required>
+
+                <br>
+                <label for="numero-telefono">Numero de telefono:</label>
+                <input type="text" id="numero-telefono" placeholder="Telefono" required>
+
+                <button class="btn-comprar" onclick="generarFacturaPDF()"><i class="fas fa-file-pdf"></i> Generar Factura en PDF</button>
+                <button class="btn-realizar-compra" onclick="realizarCompra()"><i class="fas fa-check"></i> Realizar Compra</button>
+                <button class="btn-cancelar-compra" onclick="cancelarCompra()"><i class="fas fa-times"></i> Cancelar Compra</button>
+            </div>
+        </header>
+
+        <main>
+            <h1>Aseo</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1l.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>DETERGENTE LÍQUIDO ROPA CLÁSICA TANTE</h3>
+                            <p>$14,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('DETERGENTE LÍQUIDO ROPA CLÁSICA TANTE', 14.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>DETERGENTE LÍQUIDO ROPA COLOR TANTE</h3>
+                            <p>$14,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('DETERGENTE LÍQUIDO ROPA COLOR TANTE', 14.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>DETERGENTE LÍQUIDO ROPA OSCURA TANTE</h3>
+                            <p>$14,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('DETERGENTE LÍQUIDO ROPA OSCURA TANTE', 14.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>QUITAMANCHAS EN POLVO ROPA BLANCA TANTE</h3>
+                            <p>$7,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('QUITAMANCHAS EN POLVO ROPA BLANCA TANTE', 7.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>QUITAMANCHAS EN POLVO ROPA COLOR TANTE</h3>
+                            <p>$7,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('QUITAMANCHAS EN POLVO ROPA COLOR TANTE', 7.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>QUITAMANCHAS LÍQUIDO ROPA BLANCA TANTE</h3>
+                            <p>$5,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('QUITAMANCHAS LÍQUIDO ROPA BLANCA TANTE', 5.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>QUITAMANCHAS LÍQUIDO ROPA COLOR TANTE</h3>
+                            <p>$5,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('QUITAMANCHAS LÍQUIDO ROPA COLOR TANTE', 5.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8l.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SUAVIZANTE PRIMAVERAL TANTE</h3>
+                            <p>$14,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SUAVIZANTE PRIMAVERAL TANTE', 14.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Cocina</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>AFILADOR DE CUCHILLOS</h3>
+                            <p>$13,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AFILADOR DE CUCHILLOS', 13.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>LIMPIAHORNOS TANTE</h3>
+                            <p>$6,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('LIMPIAHORNOS TANTE', 6.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>POLVO LIMPIADOR ABRASIVO TANTE</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('POLVO LIMPIADOR ABRASIVO TANTE', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>QUITAGRASA TANTE</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('QUITAGRASA TANTE', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>NATUSAL SAL MARINA</h3>
+                            <p>$6,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('NATUSAL SAL MARINA', 6.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SALSA DE SOYA</h3>
+                            <p>$12,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA DE SOYA', 12.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SALSA DE AJO</h3>
+                            <p>$16,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA DE AJO', 16.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SALSA NEGRA</h3>
+                            <p>$12,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA NEGRA', 12.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Hogar</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1h.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>AMBIENTADOR VARITAS FRUTOS ROJOS</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AMBIENTADOR VARITAS FRUTOS ROJOS', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AMBIENTADOR VARITAS FULL FRESH FRUTOS ROJOS</h3>
+                            <p>$23,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AMBIENTADOR VARITAS FULL FRESH FRUTOS ROJOS', 23.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AMBIENTADOR VARITAS FULL FRESH LAVANDA CÍTRICA</h3>
+                            <p>$23,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AMBIENTADOR VARITAS FULL FRESH LAVANDA CÍTRICA', 23.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AMBIENTADOR VARITAS FULL FRESH SWEET TRANQUILITY</h3>
+                            <p>$23,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AMBIENTADOR VARITAS FULL FRESH SWEET TRANQUILITY', 23.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>VENENO K4</h3>
+                            <p>$11,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('VENENO K4', 11.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>RODILLO QUITA PELUSA</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('RODILLO QUITA PELUSA', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AROMATIZANTE PARA AUTOS AZUL</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AROMATIZANTE PARA AUTOS AZUL', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8h.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AROMATIZANTE PARA AUTOS ROJO</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AROMATIZANTE PARA AUTOS ROJO', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Salud y belleza</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1s.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>ALISADO JAPONES</h3>
+                            <p>$21,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('ALISADO JAPONES', 21.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>GEL FRIO</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('GEL FRIO', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SHAMPOO ROMERO</h3>
+                            <p>$12,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SHAMPOO ROMERO', 12.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SHAMPOO ANTI-CASPA</h3>
+                            <p>$15,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SHAMPOO ANTI-CASPA', 15.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>MASCARILLA COLAGENO AMARILLA</h3>
+                            <p>$3,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('MASCARILLA COLAGENO AMARILLA', 3.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>MASCARILLA ALOE</h3>
+                            <p>$3,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('MASCARILLA ALOE', 3.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>GEL ALOE VERA</h3>
+                            <p>$15,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('GEL ALOE VERA', 15.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8s.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>MASCARILLA 3 PASOS</h3>
+                            <p>$3,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('MASCARILLA 3 PASOS', 3.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Jugueteria</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1j.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>DOMINO ROJO</h3>
+                            <p>$10,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('DOMINO ROJO', 10.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>JUEGO QUIEN SOY</h3>
+                            <p>$20,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('JUEGO QUIEN SOY', 20.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>ROMPECABEZAS DE PAPEL PARA COLOREAR</h3>
+                            <p>$10,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('ROMPECABEZAS DE PAPEL PARA COLOREAR', 10.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SLIME EN FORMA DE CARRO</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SLIME EN FORMA DE CARRO', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>YOYOS DE DINOSAURIOS</h3>
+                            <p>$3,500</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('YOYOS DE DINOSAURIOS', 3.500)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SLIME DE DINOSAURIO</h3>
+                            <p>$11,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SLIME DE DINOSAURIO', 11.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>JUEGO JENGA</h3>
+                            <p>$15,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('JUEGO JENGA', 15.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8j.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>BUBBLY BURBUJAS PEQUEÑO</h3>
+                            <p>$3,500</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('BUBBLY BURBUJAS PEQUEÑO', 3.500)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Papeleria</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1p.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>CINTA GRUESA TESA</h3>
+                            <p>$16,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('CINTA GRUESA TESA', 16.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>NOTAS ESPIRAL</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('NOTAS ESPIRAL', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>PEGANTE SIPEGA CRISTAL</h3>
+                            <p>$3,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('PEGANTE SIPEGA CRISTAL', 3.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SILICONA FRIA LIQUIDA TESA</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SILICONA FRIA LIQUIDA TESA', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>BLOCK FLUORESCENTE</h3>
+                            <p>$8,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('BLOCK FLUORESCENTE', 8.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>PROTECTOR HOJAS TAMAÑO CARTA OFIPLUS</h3>
+                            <p>$18,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('PROTECTOR HOJAS TAMAÑO CARTA OFIPLUS', 18.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>RESMA DE PAPEL TAMAÑO CARTA</h3>
+                            <p>$18,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('RESMA DE PAPEL TAMAÑO CARTA', 18.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8p.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>MARCADORES PRIMAVERA NEON</h3>
+                            <p>$10,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('MARCADORES PRIMAVERA NEON', 10.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+
+            <h1>Mascotas</h1>
+            <section class="productos">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="1m.jpg" alt="Producto 1">
+                        <div class="producto-info">
+                            <h3>SALSA PARA GATOS</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA PARA GATOS', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="2m.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SALSA PARA PERROS SABOR A POLLO</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA PARA PERROS SABOR A POLLO', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+                    
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="3m.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>SALSA PARA PERROS SABOR A CARNE</h3>
+                            <p>$9,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('SALSA PARA PERROS SABOR A CARNE', 9.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="4m.jpeg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>AMBIENTADOR PARA ARENA DE GATOS</h3>
+                            <p>$12,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('AMBIENTADOR PARA ARENA DE GATOS', 12.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="5m.png" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>ARENA PARA GATOS</h3>
+                            <p>$18,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('ARENA PARA GATOS', 18.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="6m.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>BAÑO SECO PARA PERROS</h3>
+                            <p>$17,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('BAÑO SECO PARA PERROS', 17.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="7m.jpg" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>BAÑO SECO PARA GATOS</h3>
+                            <p>$17,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('BAÑO SECO PARA GATOS', 17.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+                    <!--seleccionar desde aqui para agregar un nuevo producto-->
+                    <div class="producto-card">
+                        <img src="8m.png" alt="Producto 2">
+                        <div class="producto-info">
+                            <h3>CARNITAS DE RES SNACK PARA PERROS</h3>
+                            <p>$15,000</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('CARNITAS DE RES SNACK PARA PERROS', 15.000)">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <!--Cierra aqui-->
+
+
+                    <!-- Otros productos... -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Gracias por tu compra!</p>
+        </footer>
+    </div>
+
+</body>
+</html>

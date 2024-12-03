@@ -1,0 +1,228 @@
+/* Establece la altura del body y html al 100% del viewport */
+body, html {
+  font-family: 'Century Gothic', sans-serif;
+  height: 100%;
+  margin: 0; /* Elimina cualquier margen predeterminado */
+}
+
+/* Crea un contenedor para el video */
+.video-container {
+  position: fixed; /* Establece la posición fija para que el contenedor permanezca en su lugar incluso si se desplaza la página */
+  width: 100%; /* El contenedor ocupa el ancho completo del viewport */
+  height: 100%; /* El contenedor ocupa la altura completa del viewport */
+  overflow: hidden; /* Oculta cualquier parte del video que se desborde del contenedor */
+}
+
+/* Estilos para el video de fondo */
+#video-background {
+  position: absolute; /* Permite posicionar el video de fondo en relación con su contenedor */
+  top: 90%; /* Coloca el video en la mitad superior del contenedor */
+  left: 50%; /* Coloca el video en la mitad izquierda del contenedor */
+  min-width: 100%; /* Establece el ancho mínimo del video al 100% del contenedor */
+  min-height: 100%; /* Establece la altura mínima del video al 100% del contenedor */
+  width: auto; /* Permite que el ancho del video se ajuste automáticamente al tamaño del contenedor */
+  height: auto; /* Permite que la altura del video se ajuste automáticamente al tamaño del contenedor */
+  z-index: -100; /* Coloca el video detrás de otros elementos de la página */
+  transform: translateX(-50%) translateY(-50%); /* Centra el video horizontal y verticalmente en su contenedor */
+}
+
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos de la barra de navegación */
+nav {
+  background-color: #195e17; /* Color de fondo de la barra de navegación */
+}
+
+nav ul {
+  list-style-type: none; /* Quita los estilos de la lista */
+  text-align: center; /* Centra los elementos de la lista */
+}
+
+nav ul li {
+  display: inline-block; /* Coloca los elementos en línea */
+  margin:  0px; /* Espacio entre los elementos */
+}
+
+nav ul li a {
+  color: #ffffff; /* Color del texto */
+  text-decoration: none; /* Quita la subrayado de los enlaces */
+  padding: 10px 20px; /* Espacio interno de los enlaces */
+  display: block; /* Hace que los enlaces ocupen todo el espacio del contenedor */
+}
+
+nav ul li a:hover {
+  background-color: #a0a8b1c7; /* Cambia el color de fondo al pasar el mouse */
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+}
+
+/* Estilos para el contenedor de la barra de búsqueda */
+.search-container {
+  text-align: center; /* Centra el contenido dentro del contenedor */
+  margin-top: 0px; /* Establece un margen superior de 50px */
+}
+
+#search-bar {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* Estilos para el campo de entrada de búsqueda */
+.search-input {
+  font-family: 'Century Gothic', sans-serif;
+  padding: 10px; /* Añade espacio interno de 10px alrededor del campo de entrada */
+  width: 250px; /* Establece el ancho del campo de entrada en 300px */
+  border: 1px solid #ccc; /* Establece un borde sólido de 1px con color gris claro */
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+  font-size: 16px; /* Establece el tamaño de fuente en 16px */
+}
+
+/* Estilos para el botón de búsqueda */
+.search-button {
+  font-family: 'Century Gothic', sans-serif;
+  padding: 10px 20px; /* Añade espacio interno de 10px arriba y abajo, y 20px a los lados */
+  background-color: #ff7b00; /* Establece el color de fondo del botón */
+  color: #fff; /* Establece el color del texto en blanco */
+  border: none; /* Elimina el borde del botón */
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+  cursor: pointer; /* Cambia el cursor al estilo de "mano" cuando se pasa sobre el botón */
+  font-size: 16px; /* Establece el tamaño de fuente en 16px */
+}
+
+/* Estilos para el botón de búsqueda cuando se pasa el cursor sobre él */
+.search-button:hover {
+  background-color: #a0a8b1c7; /* Cambia el color de fondo del botón cuando se pasa el cursor sobre él */
+}
+
+/* Estilo para el contenedor del menú desplegable */
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+/* Estilo para el botón del menú desplegable */
+.dropbtn {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 16px;
+  background-color: #195e17; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  padding: 10px; /* Espacio interno del botón */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cursor al pasar por encima */
+}
+
+/* Estilo para el contenido del menú desplegable */
+.dropdown-content {
+  display: none; /* Ocultar el contenido por defecto */
+  position: absolute;
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+  background-color: rgba(255, 255, 255, 0.5); /* Color blanco con 50% de opacidad */; /* Color de fondo del contenido */
+  min-width: 160px; /* Ancho mínimo del contenido */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+  z-index: 1; /* Por encima de otros elementos */
+}
+
+/* Estilo para las opciones del menú desplegable */
+.dropdown-content a {
+  font-family: 'Century Gothic', sans-serif;
+  color: black; /* Color del texto */
+  padding: 12px 16px; /* Espacio interno de las opciones */
+  text-decoration: none; /* Sin subrayado */
+  display: block; /* Mostrar como bloque */
+}
+
+/* Estilo para las opciones al pasar el ratón por encima */
+.dropdown-content a:hover {
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+  background-color: #ddd; /* Color de fondo al pasar el ratón */
+}
+
+/* Mostrar el contenido cuando se pasa el ratón sobre el contenedor */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Cambiar el estilo del botón al pasar el ratón sobre el contenedor */
+.dropdown:hover .dropbtn {
+  background-color: #a0a8b1c7; /* Cambiar el color de fondo */
+  border-radius: 5px; /* Aplica un borde redondeado de 5px */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: rgba(255, 255, 255, 0.5); /* Ajusta el valor de transparencia según lo necesites */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra difuminada */
+  margin: 20px;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto de transición */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Efecto de levantamiento al pasar el mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.product-card h2 {
+  margin-top: 0;
+}
+
+.product-card a {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.product-card a:hover {
+  background-color: #555;
+}
+
+ /* Tus estilos CSS existentes aquí */
+
+    /* Estilos para el pie de página */
+    footer {
+      background-color: #ce6f10;
+      color: #fff;
+      text-align: center;
+      padding: 0px 0;
+      position: absolute;
+      width: 100%;
+      bottom: 0; /* Asegura que el pie de página esté en la parte inferior */
+    }
+
+    footer .social-icons {
+      margin: 10px 0;
+    }
+
+    footer .social-icons a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    footer .social-icons a:hover {
+      color: #50b3a2;
+    }
+

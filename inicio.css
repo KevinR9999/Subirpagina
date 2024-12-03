@@ -1,0 +1,87 @@
+body, html {
+    background-image: linear-gradient(180deg, #b4f2a0 0, #a1ec9c 16.67%, #89e397 33.33%, #6cd890 50%, #49cd8a 66.67%, #10c488 83.33%, #00bd88 100%);
+    padding: 0;
+    margin: 0;
+    font-family: 'Century Gothic', sans-serif;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+form {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: calc(25% + 100px);
+    margin-top: 70px;
+    padding-top: 28px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    padding: 12px;
+    color: #444;
+}
+
+input {
+    font-family: 'Century Gothic', sans-serif;
+    width: calc(100% - 40px);
+    padding: 12px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input[type='submit'] {
+    background-color: rgb(133, 133, 134);
+    color: #fff;
+    width: calc(100% - 40px);
+    margin-top: 22px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  
+  h1 {
+    font-family:monospace;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }

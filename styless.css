@@ -1,0 +1,359 @@
+html {
+    height:100%;
+  }
+  
+  body {
+    margin:0;
+  }
+  
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  
+  h1 {
+    font-family:monospace;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
+
+/* Establecer márgenes y tipografía por defecto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Century Gothic', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    overflow-y: auto; /* Permite desplazamiento vertical */
+    max-height: 100vh; /* Asegura que el contenido no se salga de la pantalla */
+    width: 95%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Century Gothic', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+/* Icono del carrito en la parte superior derecha */
+.carrito-icono {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.carrito-icono i {
+    font-size: 2rem;
+    color: #c4cad1;
+}
+
+.contador-productos {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #26e90d;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+/* Estilos para el menú desplegable del carrito */
+.carrito-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 100;
+}
+
+.carrito-dropdown h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.carrito-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.carrito-dropdown li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.carrito-dropdown li button {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.carrito-dropdown li button i {
+    margin-left: 10px;
+}
+
+.carrito-dropdown p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-comprar, .btn-realizar-compra {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-comprar:hover, .btn-realizar-compra:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Mostrar el carrito desplegable al hacer clic */
+.carrito-dropdown.active {
+    display: block;
+}
+
+/* Estilos generales */
+.productos h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.producto-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.producto-card img {
+    width: 100%;
+    height: auto;
+}
+
+.producto-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.producto-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.producto-info p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.carrito-dropdown {
+    display: none; /* Ocultar por defecto */
+    position: absolute;
+    right: 10px;
+    top: 60px; /* Ajusta según tu diseño */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+}
+
+.carrito-dropdown.visible {
+    display: block; /* Mostrar cuando tenga la clase 'visible' */
+}
+
+.btn-agregar {
+    background-color: #28a745; /* Color de fondo verde */
+    color: white;              /* Color del texto blanco */
+    border: none;              /* Sin borde */
+    padding: 12px 20px;        /* Espaciado interior */
+    font-size: 16px;           /* Tamaño de la fuente */
+    cursor: pointer;           /* Cambia el cursor al estilo de "mano" */
+    border-radius: 5px;        /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+}
+
+.btn-agregar:hover {
+    background-color: #218838; /* Color de fondo más oscuro al pasar el mouse */
+    transform: scale(1.05);    /* Efecto de "crecimiento" al pasar el mouse */
+}
+
+.btn-agregar:active {
+    background-color: #1e7e34; /* Color más oscuro cuando el botón es presionado */
+    transform: scale(0.98);    /* Ligeramente más pequeño al hacer clic */
+}
+
+/* Otros estilos que necesites */
+
+/* Estilos generales para el formulario */
+label {
+    display: block;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Century Gothic', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Para mejorar el espaciado entre los campos */
+input[type="text"]::placeholder {
+    font-style: italic;
+    color: #888;
+}
+
+/* Estilos para la lista del carrito con barra de desplazamiento */
+#lista-carrito {
+    max-height: 200px;  /* Altura máxima del área visible */
+    overflow-y: auto;   /* Habilitar desplazamiento vertical */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+#lista-carrito li {
+    margin-bottom: 10px;
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Estilos para personalizar la barra de desplazamiento */
+#lista-carrito::-webkit-scrollbar {
+    width: 8px;
+}
+
+#lista-carrito::-webkit-scrollbar-thumb {
+    background-color: #888;  /* Color del "pulgar" (la parte que se mueve) */
+    border-radius: 10px;
+}
+
+#lista-carrito::-webkit-scrollbar-thumb:hover {
+    background-color: #555;  /* Color al pasar el cursor sobre el "pulgar" */
+}
+
+#lista-carrito::-webkit-scrollbar-track {
+    background-color: #f1f1f1;  /* Fondo del track (la pista de desplazamiento) */
+}
+
+.btn-cancelar, .btn-cancelar-compra { /*codigo para subir a git*/
+    background-color: #b90909;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-cancelar:hover, .btn-cancelar-compra:hover {
+    background-color: #c70909;
+    transform: scale(1.05);
+}
