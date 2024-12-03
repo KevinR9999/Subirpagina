@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
 // Usuario no encontrado
 echo "<script>
     alert('Usuario no encontrado. Redirigiendo a la página de registro.');
-    window.location.href = 'reg.php';
+    window.location.href = 'index.php';
   </script>";
 }
 
